@@ -1,0 +1,7 @@
+module Musicplayer
+typeinfo appMusicplayer.qmltypes
+prefer :/Musicplayer/
+Main 1.0 Main.qml
+AudioInfoBox 1.0 AudioInfoBox.qml
+TextButton 1.0 TextButton.qml
+
