@@ -1,8 +1,0 @@
-<RCC>
-  <qresource prefix="/Musicplayer/">
-    <file alias="Main.qml">/Users/mercuric_novel0/Desktop/Musicplayer/Main.qml</file>
-    <file alias="AudioInfoBox.qml">/Users/mercuric_novel0/Desktop/Musicplayer/AudioInfoBox.qml</file>
-    <file alias="TextButton.qml">/Users/mercuric_novel0/Desktop/Musicplayer/TextButton.qml</file>
-  </qresource>
-</RCC>
-
