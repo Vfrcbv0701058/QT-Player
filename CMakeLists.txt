@@ -4,7 +4,7 @@ project(Musicplayer VERSION 0.1 LANGUAGES CXX)
 
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-find_package(Qt6 6.4 REQUIRED COMPONENTS Quick)
+find_package(Qt6 6.4 REQUIRED COMPONENTS Quick Multimedia) # Find Multimedia library in Qt
 
 qt_standard_project_setup()
 
@@ -18,7 +18,21 @@ qt_add_qml_module(appMusicplayer
     QML_FILES
         Main.qml
         QML_FILES AudioInfoBox.qml
-        QML_FILES TextButton.qml
+        QML_FILES ImageButton.qml
+
+    # Add resources
+    RESOURCES
+    # Icons
+    assets/icons/app_icon.png
+    assets/icons/next_icon.png
+    assets/icons/pause_icon.png
+    assets/icons/play_icon.png
+    assets/icons/previous_icon.png
+    # Song photo
+    assets/images/mozartNachtmusik.jpg
+    assets/images/SymphonyNo5.jpg
+    # Song gif
+    assets/videos/air.mp4
 )
 
 # Qt for iOS sets MACOSX_BUNDLE_GUI_IDENTIFIER automatically since Qt 6.1.
@@ -33,7 +47,7 @@ set_target_properties(appMusicplayer PROPERTIES
 )
 
 target_link_libraries(appMusicplayer
-    PRIVATE Qt6::Quick
+    PRIVATE Qt6::Quick Qt6::Multimedia # add library "Multimadia" to project
 )
 
 include(GNUInstallDirs)

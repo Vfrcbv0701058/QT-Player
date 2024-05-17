@@ -39,7 +39,7 @@ Window {    // Main window
             songIngex: 0
             tittle: "Eine Kleine Nachtmusik"
             authorName: "Wolfgan Amadeus Mozart"
-            imageColor: "red"
+            imageSource: "assets/images/mozartNachtmusik.jpg"
         }
 
         // Second object AudioInfoBox which contains data about the second song
@@ -48,7 +48,7 @@ Window {    // Main window
             songIngex: 1
             tittle: "Symphone No. 5"
             authorName: "Ludwig Van Beethowen"
-            imageColor: "yellow"
+            imageSource: "assets/images/SymphonyNo5.jpg"
         }
 
         // Third object AudioInfoBox which contains data about the third song
@@ -57,7 +57,8 @@ Window {    // Main window
             songIngex: 2
             tittle: "Air on the G Strings"
             authorName: "Johann Sebastian Bach"
-            imageColor: "purple"
+            // For video we should write path like this
+            videoSource: "qrc:/Musicplayer/assets/videos/air.mp4"
         }
     }
 
@@ -77,35 +78,35 @@ Window {    // Main window
             anchors.centerIn: parent
             spacing: 20
 
-            TextButton{
+            ImageButton{
                 id: previousButton
 
                 width: 50
                 height: 50
 
-                text: "<"
+                source: "assets/icons/previous_icon.png"
 
                 onClicked: playerController.switchToPreviousSong()
             }
 
-            TextButton{
+            ImageButton{
                 id: playPause
 
-                width: 75
+                width: 50
                 height: 50
 
-                text: playerController.playing ? "Pause" : "Play"
+                source: playerController.playing ? "assets/icons/pause_icon.png" : "assets/icons/play_icon.png"
 
                 onClicked: playerController.playPause()
             }
 
-            TextButton{
+            ImageButton{
                 id: nextButton
 
                 width: 50
                 height: 50
 
-                text: ">"
+                source: "assets/icons/next_icon.png"
 
                 onClicked: playerController.switchToNextSong()
             }

@@ -1,4 +1,5 @@
 import QtQuick
+import QtMultimedia
 
 // This file is created to describe a layout that includes the basic elements of a song: its title, album artwork, and author
 
@@ -9,8 +10,13 @@ Item {
     required property int songIngex     // Property that allows each song to have its own index
     property alias tittle: tittleText.text      // pass the song title to tittleText
     property alias authorName: authorText.text      // pass the author name to authorText
-    property alias imageColor: albumImage.color     // set album's color for each song
+    property alias imageSource: albumImage.source     // set source file to album image for each song
+    property alias videoSource: albumVideo.source     // set source file to album video for each song
 
+    // This line ensures that the item is only visible if its song index matches
+    // the index of the currently playing song. It compares the current song index
+    // managed by playerController with the songIngex property of this item.
+    // If they match, the item is made visible; otherwise, it is hidden.
     visible: playerController.curentSongIndex === root.songIngex
 
     // Create anchors for this layout
@@ -22,9 +28,8 @@ Item {
     }
 
     // Song's image
-    Rectangle{
+    Image {
         id: albumImage
-
         anchors{
             verticalCenter: parent.verticalCenter
             left: parent.left
@@ -33,6 +38,21 @@ Item {
         // Sizes
         width: 150
         height: 150
+    }
+
+    Video{
+        id: albumVideo
+        anchors{
+            verticalCenter: parent.verticalCenter
+            left: parent.left
+        }
+
+        // Sizes
+        width: 150
+        height: 150
+
+        loops: MediaPlayer.Infinite
+        volume: 0
     }
 
     //Song name's text style
@@ -75,6 +95,15 @@ Item {
         // Font
         font{
             pixelSize: 16
+        }
+    }
+
+    onVisibleChanged: {
+        if(visible){
+            albumVideo.play()
+        } else {
+            albumVideo.seek(0)
+            albumVideo.stop()
         }
     }
 }
