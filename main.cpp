@@ -1,6 +1,7 @@
 #include <QGuiApplication>
 #include <QIcon>
 #include <QQmlApplicationEngine>
+#include "PlayerController.h"
 
 int main(int argc, char *argv[])
 {
@@ -10,6 +11,10 @@ int main(int argc, char *argv[])
     app.setWindowIcon(QIcon(":/Musicplayer/assets/icons/app_icon.png"));
 
     QQmlApplicationEngine engine;
+
+    PlayerController *playerController = new PlayerController(&app);
+    qmlRegisterSingletonInstance("com.company.PlayerContoller", 1, 0, "PlayerController", playerController);
+
     const QUrl url(QStringLiteral("qrc:/Musicplayer/Main.qml"));
     QObject::connect(
         &engine,

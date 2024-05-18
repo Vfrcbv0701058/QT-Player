@@ -1,5 +1,5 @@
 import QtQuick
-
+import com.company.PlayerContoller
 
 Window {    // Main window
     id: root
@@ -86,7 +86,7 @@ Window {    // Main window
 
                 source: "assets/icons/previous_icon.png"
 
-                onClicked: playerController.switchToPreviousSong()
+                onClicked: PlayerController.switchToPreviousSong()
             }
 
             ImageButton{
@@ -95,9 +95,9 @@ Window {    // Main window
                 width: 50
                 height: 50
 
-                source: playerController.playing ? "assets/icons/pause_icon.png" : "assets/icons/play_icon.png"
+                source: PlayerController.playing ? "assets/icons/pause_icon.png" : "assets/icons/play_icon.png"
 
-                onClicked: playerController.playPause()
+                onClicked: PlayerController.playPause()
             }
 
             ImageButton{
@@ -108,44 +108,44 @@ Window {    // Main window
 
                 source: "assets/icons/next_icon.png"
 
-                onClicked: playerController.switchToNextSong()
-            }
-        }
-    }
-
-    // This is an invisible object that is used to control the currently playing song and to switch songs
-    QtObject {
-        id: playerController
-
-        property int curentSongIndex: 0  // Index of the current song, initialized to 0
-        property int songCount: 3  // Total number of songs, initialized to 3
-        property bool playing: false  // Boolean indicating if the player is currently playing, initialized to false
-
-        function playPause() {
-            // Toggles the playing state between true and false
-            playing = !playing
-        }
-
-        function switchToPreviousSong() {
-            // Switches to the previous song in the playlist
-            if (curentSongIndex > 0) {
-                // If the current song is not the first one, decrement the index
-                --curentSongIndex
-            } else {
-                // If the current song is the first one, wrap around to the last song
-                curentSongIndex = songCount - 1
-            }
-        }
-
-        function switchToNextSong() {
-            // Switches to the next song in the playlist
-            if (curentSongIndex + 1 >= songCount) {
-                // If the current song is the last one, wrap around to the first song
-                curentSongIndex = 0
-            } else {
-                // If the current song is not the last one, increment the index
-                ++curentSongIndex
+                onClicked: PlayerController.switchToNextSong()
             }
         }
     }
 }
+
+//     // This is an invisible object that is used to control the currently playing song and to switch songs
+//     QtObject {
+//         id: PlayerController
+
+//         property int currentSongIndex: 0  // Index of the current song, initialized to 0
+//         property int songCount: 3  // Total number of songs, initialized to 3
+//         property bool playing: false  // Boolean indicating if the player is currently playing, initialized to false
+
+//         function playPause() {
+//             // Toggles the playing state between true and false
+//             playing = !playing
+//         }
+
+//         function switchToPreviousSong() {
+//             // Switches to the previous song in the playlist
+//             if (currentSongIndex > 0) {
+//                 // If the current song is not the first one, decrement the index
+//                 --currentSongIndex
+//             } else {
+//                 // If the current song is the first one, wrap around to the last song
+//                 currentSongIndex = songCount - 1
+//             }
+//         }
+
+//         function switchToNextSong() {
+//             // Switches to the next song in the playlist
+//             if (currentSongIndex + 1 >= songCount) {
+//                 // If the current song is the last one, wrap around to the first song
+//                 currentSongIndex = 0
+//             } else {
+//                 // If the current song is not the last one, increment the index
+//                 ++currentSongIndex
+//             }
+//         }
+//     }

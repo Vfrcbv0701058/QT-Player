@@ -10,6 +10,7 @@ qt_standard_project_setup()
 
 qt_add_executable(appMusicplayer
     main.cpp
+    PlayerController.h PlayerController.cpp
 )
 
 qt_add_qml_module(appMusicplayer

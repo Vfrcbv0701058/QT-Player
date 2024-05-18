@@ -1,5 +1,6 @@
 import QtQuick
 import QtMultimedia
+import com.company.PlayerContoller
 
 // This file is created to describe a layout that includes the basic elements of a song: its title, album artwork, and author
 
@@ -15,9 +16,9 @@ Item {
 
     // This line ensures that the item is only visible if its song index matches
     // the index of the currently playing song. It compares the current song index
-    // managed by playerController with the songIngex property of this item.
+    // managed by PlayerController with the songIngex property of this item.
     // If they match, the item is made visible; otherwise, it is hidden.
-    visible: playerController.curentSongIndex === root.songIngex
+    visible: PlayerController.currentSongIndex === root.songIngex
 
     // Create anchors for this layout
     anchors{
